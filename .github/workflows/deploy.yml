@@ -1,0 +1,37 @@
+name: Serverless CustomDomain
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "template.yml"
+
+jobs:
+  apply:
+    name: Apply
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Funcraft
+        run: |
+          sudo npm install @alicloud/fun -g
+          mkdir -p ~/.fcli && echo "$FUNCRAFT_CONFIG_YML" > ~/.fcli/config.yaml
+        env:
+          FUNCRAFT_CONFIG_YML: ${{ secrets.FUNCRAFT_CONFIG_YML }}
+
+      - name: Get SSL File
+        run: |
+          echo "$SSL_CERT" > fun.certificate.pem
+          echo "$SSL_PRIVATE_KEY" > fun.privateKey.pem
+        env:
+          SSL_CERT: ${{ secrets.SSL_CERT }}
+          SSL_PRIVATE_KEY: ${{ secrets.SSL_PRIVATE_KEY }}
+
+      - name: Apply CustomDomain
+        run: fun deploy -y
+        env:
+          TIMEOUT: ${{ secrets.FUNCRAFT_TIMEOUT }}
+          RETRIES: ${{ secrets.FUNCRAFT_RETRIES }}
