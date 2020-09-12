@@ -2,10 +2,7 @@ name: Serverless CustomDomain
 
 on:
   push:
-    branches:
-      - master
-    paths:
-      - "template.yml"
+    branches: [master]
 
 jobs:
   apply:
