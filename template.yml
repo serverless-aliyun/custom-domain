@@ -20,3 +20,6 @@ Resources:
           "/series/*":
             ServiceName: series
             FunctionName: index
+          "/stats/*":
+            ServiceName: stats
+            FunctionName: index
