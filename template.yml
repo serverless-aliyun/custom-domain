@@ -26,3 +26,9 @@ Resources:
           "/ebill/*":
             ServiceName: ebill
             FunctionName: index
+          "/scheduling":
+            ServiceName: scheduling
+            FunctionName: index
+          "/scheduling/*":
+            ServiceName: scheduling
+            FunctionName: index
