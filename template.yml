@@ -14,11 +14,11 @@ Resources:
           "/*":
             ServiceName: docs
             FunctionName: index
-          "/stats/*":
-            ServiceName: stats
-            FunctionName: index
           "/ebill/*":
             ServiceName: ebill
+            FunctionName: index
+          "/stats/*":
+            ServiceName: stats
             FunctionName: index
           "/scheduling":
             ServiceName: scheduling
