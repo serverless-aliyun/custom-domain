@@ -24,7 +24,7 @@ pipeline {
                 }
             }
         }
-        stage('申请证书') {
+        stage('上传证书') {
             steps {
                 sh 'echo "TODO"'
             }
