@@ -1,9 +1,7 @@
 ## Serverless CustomDomain
 
-## Routes
+### SSL 证书自动更新
 
-| Route Path | ServiceName | FunctionName |
-| ---------- | ----------- | ------------ |
-| /\*        | docs        | index        |
-| /series    | series      | index        |
-| /series/\* | series      | index        |
+- acme.sh 使用 dns 模式
+- 配置 Ali_Key Ali_Secret 环境变量
+- 上传到制品库
