@@ -26,8 +26,12 @@ pipeline {
         }
         stage('上传证书') {
             steps {
-                sh 'ls -l out'
-                sh 'echo "TODO"'
+                sh """
+                    mv out/fun.dongfg.com/fullchain.cer ssl.fun.cer
+                    mv out/fun.dongfg.com/fun.dongfg.com.key ssl.fun.key
+                """
+                codingArtifactsGeneric(files: 'ssl.fun.cer', repoName: 'secrets')
+                codingArtifactsGeneric(files: 'ssl.fun.key', repoName: 'secrets')
             }
         }
     }
