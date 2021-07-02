@@ -20,12 +20,13 @@ pipeline {
         stage('申请证书') {
             steps {
                 withCredentials([cloudApi(credentialsId: 'ca25bc86-c0dc-4b7f-a9a9-3074cfce12fa', secretIdVariable: 'Ali_Key', secretKeyVariable: 'Ali_Secret')]) {
-                    sh './issue'
+                    sh './issue.sh'
                 }
             }
         }
         stage('上传证书') {
             steps {
+                sh 'ls -l out'
                 sh 'echo "TODO"'
             }
         }
